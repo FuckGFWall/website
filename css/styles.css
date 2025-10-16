@@ -136,9 +136,9 @@ header.site-header {
 .site-nav__link::after {
   content: "";
   position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 100%;
+  left: 5px;
+  bottom: 4px;
+  width: 80%;
   height: 2px;
   background: var(--color-accent);
   transform: scaleX(0);
@@ -160,7 +160,7 @@ header.site-header {
 .nav-toggle {
   display: none;
   background: var(--color-bg);
-  border: 1px solid rgba(148, 163, 184, 0.4);
+  border: none;
   border-radius: var(--radius-md);
   padding: 10px 12px;
   cursor: pointer;
@@ -178,7 +178,7 @@ header.site-header {
 .nav-toggle__icon::after {
   content: "";
   display: block;
-  width: 22px;
+  width: 18px;
   height: 2px;
   background: var(--color-text);
   border-radius: 999px;
@@ -191,11 +191,11 @@ header.site-header {
 }
 
 .nav-toggle__icon::before {
-  top: -6px;
+  top: -7px;
 }
 
 .nav-toggle__icon::after {
-  top: 4px;
+  top: 7px;
 }
 
 .nav-open .nav-toggle__icon {
@@ -203,11 +203,11 @@ header.site-header {
 }
 
 .nav-open .nav-toggle__icon::before {
-  transform: translateY(6px) rotate(45deg);
+  transform: translate(0, 8.5px) rotate(45deg);
 }
 
 .nav-open .nav-toggle__icon::after {
-  transform: translateY(-6px) rotate(-45deg);
+  transform: translate(0, -7px) rotate(-45deg);
 }
 
 .site-nav__list {
@@ -561,6 +561,7 @@ header.site-header {
 @media (max-width: 640px) {
   .hero {
     padding: 72px 0 48px;
+    text-align: center;
   }
 
   .primary-button {
@@ -572,12 +573,9 @@ header.site-header {
     padding: 72px 0;
   }
 
-  .section__content {
-    text-align: left;
-  }
-
   .why-card {
     padding: 24px;
+    text-align: center;
   }
 
   .social-links {
@@ -585,9 +583,25 @@ header.site-header {
   }
 
   .why__background {
-    margin-left: -12px;
-    margin-top: -8px;
-    max-width: 240px;
+    position: absolute;
+    top: -28px;
+    right: -12px;
+    margin: 0;
+    max-width: 220px;
+    pointer-events: none;
+  }
+
+  .section__content,
+  .note,
+  .why-card__title,
+  .download-grid {
+    text-align: center;
+  }
+
+  .why-card__list {
+    padding-left: 20px;
+    text-align: left;
+    list-style-position: outside;
   }
 }
 

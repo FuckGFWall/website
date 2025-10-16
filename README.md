@@ -6,14 +6,12 @@ TrashVPN（垃圾VPN）的静态官网，实现“免费、不设限、每日更
 
 - `index.html`：主界面（功能亮点、视觉动画、测速仪组件、风险提醒）
 - `download.html`：客户端下载页（四大平台按钮，悬浮动效）
-- `about.html`：关于页，实时拉取并渲染 `about.md`
+- `about.html`：关于页，直接编写 HTML 内容即可展示
 - `css/styles.css`：全局样式、响应式、动画与组件样式
 - `js/common.js`：导航、页脚注入与滚动动画逻辑
 - `js/main.js`：首页测速仪、卡片动画
 - `js/download.js`：下载页入口（复用全局脚本）
-- `js/about.js`：关于页 Markdown 加载逻辑
-- `assests/`：项目图像资源（请注意目录拼写）
-- `about.md`：关于页面内容（占位，可自行填写）
+- `assests/`：项目图像资源（注意目录拼写）
 - `CNAME`：Cloudflare 自定义域名占位
 
 ## 本地预览
@@ -43,7 +41,7 @@ serve .
 
 ## 自定义说明
 
-- `about.md` 现为占位内容，请直接编辑该文件即可更新关于页面。
+- `about.html` 可直接编辑，写入标准 HTML 内容即可更新关于页面。
 - 下载页按钮指向占位链接，可替换为真实下载地址。
 - 页脚社交链接为占位，可在 `js/common.js` 中更新为正式渠道。
 - 若需调整动画、配色或断点，可统一修改 `css/styles.css`。
