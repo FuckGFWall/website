@@ -19,36 +19,31 @@ const ARTICLES = {
         id: "about-trashvpn",
         title: "关于 TrashVPN",
         html: `
-          <p>TrashVPN 是一个由个人开发者开发和维护的免费 VPN / 网络代理软件。项目最初只是为了让自己在需要查资料、访问开发文档、测试海外服务时有一个低成本工具，后来才逐步整理成 Windows 和 Android 客户端，并把下载入口、说明文档和服务状态页面放到网站上。</p>
-          <p>在开发过程中，开发者使用了 Codex 辅助编写、调整与检查部分代码和网页内容。也就是说，Codex 参与了很多重复性工作，例如整理页面结构、补全文案、检查脚本语法、优化响应式布局等；但产品的设计取舍、发布、运营、服务器维护和最终责任仍由开发者本人承担。</p>
-          <p>目前 TrashVPN 只支持 <strong>Windows</strong> 和 <strong>Android</strong> 客户端。iOS 和 macOS 入口在下载页面中仅作为占位展示，暂时没有正式版本。你可以在下载页面获取现有安装包，也可以查看对应客户端的隐私政策和开源许可证说明。</p>
-          <p>TrashVPN 当前免费提供使用，核心原因不是商业补贴，而是运营成本被压得很低：客户端逻辑尽量简单，节点自动同步，网站也是静态部署，日常维护主要集中在少量后端接口和可用节点上。只要成本仍然可控，软件就会尽量保持免费。</p>
-          <p>不过，“免费”不代表“无限承诺”。节点可用性会受 Cloudflare 路由、账户限额、运营商线路、地区网络环境和目标网站规则影响。如果未来节点被大规模封锁，或免费资源无法继续支撑使用量，项目可能会调整策略，例如减少可用节点、暂停服务，或提供额外的付费节点。相关变化会尽量在网站或客户端中提前说明。</p>
-          <p>TrashVPN 的定位更接近一个轻量、透明、低成本的网络访问工具，而不是企业级隐私产品或商业加速器。使用前请先了解它的限制：节点地区可能变化，速度不保证稳定，不适合传输敏感信息，也不应该被用于违法、攻击、欺诈或滥用网络资源的行为。</p>
+          <p>TrashVPN 是由独立开发者维护的免费 VPN / 网络代理软件，现支持 <strong>Windows、Android、iOS 和 macOS</strong>。</p>
+          <p>软件通过 Cloudflare 网络提供连接，因此节点地区、速度和可用性可能受路由、运营商线路、账户资源和目标网站规则影响，不能保证固定地区或稳定速度。</p>
+          <p>TrashVPN 适合临时查资料、轻量访问和测试连接。请从官网获取客户端，不要将其用于违法、攻击、欺诈或传输敏感信息。</p>
         `,
       },
       {
         id: "country-availability",
         title: "为什么可提供的国家这么少",
         html: `
-          <p>TrashVPN 的连接会涉及 Cloudflare 网络。很多人看到“节点国家”时会以为它和传统 VPS 一样：服务器买在哪个国家，出口就固定显示哪个国家。但 Cloudflare 的路由方式并不完全是这样。同一个节点，在不同运营商、不同城市、不同时间段，甚至同一地区的不同宽带线路下，都可能被 Cloudflare 分配到不同的数据中心。</p>
-          <p>Cloudflare 会综合判断用户的物理距离、附近数据中心数量、各地区服务器当前负载、线路质量以及自身调度策略，然后决定你的连接最终从哪里进入它的网络。这个过程基本由 Cloudflare 控制，TrashVPN 无法稳定指定外层 IP 一定显示为某个国家。</p>
-          <p>这也是为什么可选择国家看起来比较少：如果强行把外层国家写成很多选项，实际体验可能会变成“显示美国，访问时却像新加坡”“显示日本，测速却走香港”。与其做一个看起来很丰富但不可靠的列表，不如把实际能稳定解释的内容写清楚。</p>
-          <p>除了外层 IP，连接中还有一层可配置的内层 IP，也就是 <strong>proxy IP</strong>。当前 proxy IP 会从香港、新加坡、日本、美国这四个地区随机分配给用户。访问使用 Cloudflare CDN 的网站时，流量通常更容易体现为 proxy IP；访问其它网站时，则通常更容易体现为外层 IP 的路由结果。</p>
-          <p>这会导致一些看起来矛盾的现象：测速网站显示一个地区，社交网站判断成另一个地区，搜索引擎又要求额外验证。这不一定代表软件出错，而是多层网络、CDN、代理 IP、目标网站风控共同作用的结果。</p>
-          <div class="help-callout">因此，软件内显示的国家更多是一种连接参考，而不是绝对承诺。选择节点时建议优先看延迟、可用性和你要访问的网站是否正常，而不是只看国家名称。</div>
+          <p>很多人看到“节点国家”时会以为它和 VPS 一样：服务器买在哪个国家，出口就固定在哪个国家。但 Cloudflare 节点却并不是这样。同一个节点，在不同运营商、不同城市、不同时间段，甚至同一地区的不同宽带线路下，都可能被 Cloudflare 分配到不同国家的数据中心。</p>
+          <p>因为 Cloudflare 会综合判断用户的物理距离、附近数据中心数量、各地区服务器当前负载、线路质量以及自身调度策略，然后决定你的连接进入哪个国家的数据中心。</p>
+          <p>所以同一个节点，你的落地到哪个国家，全世界就只有你自己知道。软件内标注的国家只是个装饰品，让软件看上去更美观。</p>
+          <div class="help-callout">因此，增加国家的数量没有任何意义。</div>
+
+          <p>除了外层 IP，连接中一部分流量使用的是内层 IP，也就是 <strong>proxy IP</strong>。proxy IP 会从韩国、新加坡、日本、美国这四个地区随机分配给用户。访问使用 Cloudflare CDN 的网站时，使用的是 proxy IP；访问其它网站时，则为外层 IP。</p>
         `,
       },
       {
         id: "usage-limit",
         title: "会有限额吗",
         html: `
-          <p>会。TrashVPN 依赖的部分资源存在 Cloudflare 账户级限额，限额会在每天<strong>北京时间早上 8 点</strong>重置。当某个账户达到限额后，关联到该账户的节点可能会暂时不可用，直到限额重置或客户端重新获取到其它可用节点。</p>
-          <p>需要注意的是，一个账户可能会被分配给多位用户共同使用。因此，出现限额并不一定说明是你个人使用过多，也可能是同一账户下其它用户共同消耗造成的。免费服务为了降低成本，不会为每个用户单独准备完整独占资源。</p>
-          <p>客户端会每小时获取一次账户使用量信息。当某个账户接近限额时，客户端会尝试重新同步最新节点，尽可能切换到仍然可用的资源。这个过程不是实时计费系统，也不是精确到个人的流量统计，只是用于提高免费节点整体可用性的调度参考。</p>
-          <p>如果你发现某个节点突然连接失败、速度显著下降或网页打不开，可以先等待一段时间，或手动重新获取节点。很多时候问题来自账户限额、线路拥堵、Cloudflare 调度变化或目标网站风控，而不是客户端本身损坏。</p>
-          <p>你也可以前往<a href="status.html">状态页面</a>查看整体负载的大致分布。状态页显示的是账户请求量范围的统计和平均请求量，用来帮助判断当前服务是否整体繁忙；它不是单个设备、单个 IP 或单个用户的精确账单。</p>
-          <p>如果你需要长时间、高稳定性或可预测的专用线路，TrashVPN 当前的免费节点可能并不适合。它更适合临时查资料、轻量访问、测试连接可用性等场景。</p>
+          <p>会。TrashVPN 使用的部分 Cloudflare 账户资源存在限额，每天<strong>北京时间 8 点</strong>重置。达到限额后，相关节点可能暂时不可用。</p>
+          <p>此外，个人使用量也有限制。手机端和 macOS 端达到个人限额后，可以通过观看广告获取额外使用量；Windows 端达到限额后，等待十分钟即可在客户端手动重置使用量。</p>
+          <p>一个账户可能由多位用户共享，因此达到限额不一定是个人使用过多。遇到节点失败或速度下降时，可以稍后重试、重新获取节点，或前往<a href="status.html">状态页面</a>查看整体负载。</p>
+          <p>如果需要长期、稳定且可预测的专用线路，免费节点可能并不适合；它更适合临时查资料、轻量访问和测试连接。</p>
         `,
       },
       {
@@ -99,36 +94,31 @@ const ARTICLES = {
         id: "about-trashvpn",
         title: "About TrashVPN",
         html: `
-          <p>TrashVPN is a free VPN / network proxy app developed and maintained by an independent developer. It started as a low-cost tool for personal needs such as reading technical documentation, checking overseas services, and testing network access. Over time, it was packaged into Windows and Android clients, with a website for downloads, help articles, and service status.</p>
-          <p>During development, Codex was used to assist with writing, adjusting, and checking parts of the code and website content. Codex helped with repetitive work such as page structure, copy drafts, syntax checks, and responsive layout improvements. Product decisions, operations, releases, server maintenance, and final responsibility still remain with the developer.</p>
-          <p>TrashVPN currently supports <strong>Windows</strong> and <strong>Android</strong>. The iOS and macOS entries on the download page are placeholders only and do not represent released clients. You can download the available installers from the download page and review the privacy policy and open-source license notices for each platform there.</p>
-          <p>The service is currently free mainly because operating costs are kept very low. The client is intentionally lightweight, node synchronization is automated, and the website is statically hosted. Most maintenance work is limited to a small backend and available node resources. As long as this remains manageable, the service will try to stay free.</p>
-          <p>However, “free” does not mean unlimited guarantees. Availability can be affected by Cloudflare routing, account quotas, ISP lines, regional network conditions, and rules applied by target websites. If resources become too expensive or nodes are widely blocked, the project may reduce available nodes, pause service, or introduce optional paid resources. Any major changes will be announced through the website or app when possible.</p>
-          <p>TrashVPN should be understood as a lightweight, transparent, low-cost access tool rather than an enterprise privacy product or commercial accelerator. Before using it, please understand the limits: regions may change, speed is not guaranteed, sensitive information should not be transmitted through it, and it must not be used for illegal activity, attacks, fraud, or abuse of network resources.</p>
+          <p>TrashVPN is a free VPN / network proxy maintained by an independent developer. It currently supports <strong>Windows, Android, iOS, and macOS</strong>.</p>
+          <p>The app connects through the Cloudflare network, so region, speed, and availability may be affected by routing, ISP lines, account resources, and target-site rules. A fixed region or stable speed cannot be guaranteed.</p>
+          <p>TrashVPN is intended for temporary research, lightweight access, and connection testing. Download clients from the official website, and do not use the app for illegal activity, attacks, fraud, or transmitting sensitive information.</p>
         `,
       },
       {
         id: "country-availability",
         title: "Why are there so few countries available?",
         html: `
-          <p>TrashVPN connections involve the Cloudflare network. Many users expect a “node country” to behave like a traditional VPS: if the server is purchased in one country, the exit location should always appear there. Cloudflare routing is different. The same node may be routed to different data centers depending on ISP, city, time of day, and even different broadband lines in the same region.</p>
-          <p>Cloudflare considers physical distance, nearby data center capacity, current server load, line quality, and its own scheduling strategy before deciding where a connection enters its network. This process is mostly controlled by Cloudflare, so TrashVPN cannot reliably force the outer IP to appear in a specific country.</p>
-          <p>This is why the country list is intentionally small. If the app displayed many countries that could not be reliably delivered, users might see “United States” in the app while traffic behaves like Singapore, or select “Japan” while tests show Hong Kong. A smaller, more honest explanation is better than a large but misleading list.</p>
-          <p>In addition to the outer IP, there is also a configurable inner IP layer, the <strong>proxy IP</strong>. At present, proxy IPs are randomly assigned from Hong Kong, Singapore, Japan, and the United States. When visiting websites that use Cloudflare CDN, traffic is more likely to reflect the proxy IP; when visiting other websites, the result is more likely to reflect the outer IP routing.</p>
-          <p>This can create confusing results: a speed test may show one region, a social app may identify another, and a search engine may request additional verification. That does not always mean the client is broken. It is often the result of multiple network layers, CDN behavior, proxy IPs, and target-site risk systems working together.</p>
-          <div class="help-callout">For this reason, the country shown in the app is a practical reference, not an absolute promise. When choosing a node, focus on latency, availability, and whether the sites you need actually work.</div>
+          <p>Many people assume that a “node country” works like a VPS: the country where the server is purchased permanently determines its exit country. Cloudflare nodes do not work this way. The same node may be assigned by Cloudflare to data centers in different countries depending on the ISP, city, time period, and even the broadband line used within the same region.</p>
+          <p>Cloudflare evaluates the user's physical distance, the number of nearby data centers, current server loads in each region, line quality, and its own scheduling policies before deciding which country's data center will handle the connection.</p>
+          <p>Therefore, for the same node, only you can know which country your connection actually lands in. The country shown in the app is merely decorative and makes the interface look better.</p>
+          <div class="help-callout">Therefore, increasing the number of countries serves no purpose.</div>
+
+          <p>In addition to the outer IP, part of the connection traffic uses an inner IP, also known as the <strong>proxy IP</strong>. The proxy IP is randomly assigned from South Korea, Singapore, Japan, or the United States. Websites using Cloudflare CDN are accessed through the proxy IP; other websites use the outer IP.</p>
         `,
       },
       {
         id: "usage-limit",
         title: "Are there usage limits?",
         html: `
-          <p>Yes. Some resources used by TrashVPN are subject to Cloudflare account-level quotas, which reset every day at <strong>08:00 Beijing time</strong>. When an account reaches its quota, nodes associated with that account may become temporarily unavailable until the quota resets or the client obtains other available nodes.</p>
-          <p>One account may be shared by multiple users. Therefore, hitting a limit does not necessarily mean you personally used too much traffic. It may be the combined result of other users assigned to the same account. To keep the service free and low-cost, each user does not receive a fully dedicated resource pool.</p>
-          <p>The client checks account usage information about once every hour. When an account is close to its limit, the client will try to sync fresh nodes and switch to resources that are still available. This is not a real-time billing system and not a precise personal traffic counter; it is a scheduling reference used to improve the overall availability of free nodes.</p>
-          <p>If a node suddenly fails, becomes slow, or cannot open websites, you can wait for a while or manually refresh the node list. In many cases, the cause is account quota, line congestion, Cloudflare scheduling changes, or target-site risk controls rather than a damaged client.</p>
-          <p>You can also visit the <a href="status.html">status page</a> to view the approximate overall load distribution. The status page shows account request ranges and average request volume. It is intended to help judge whether the service is generally busy; it is not an exact bill for one device, one IP, or one user.</p>
-          <p>If you need long-term, highly stable, predictable dedicated connectivity, the current free nodes may not be the right fit. TrashVPN is better suited for temporary research, lightweight access, and testing whether a route is available.</p>
+          <p>Yes. Some Cloudflare account resources used by TrashVPN have quotas that reset daily at <strong>08:00 Beijing time</strong>. When a quota is reached, related nodes may become temporarily unavailable.</p>
+          <p>There is also a personal usage limit. On mobile and macOS, you can watch ads to obtain additional usage after reaching the personal limit. On Windows, wait ten minutes after reaching the limit, then manually reset your usage in the client.</p>
+          <p>An account may be shared by multiple users, so reaching a quota does not necessarily mean that you personally used too much. If a node fails or slows down, try again later, refresh the node list, or check the overall load on the <a href="status.html">status page</a>.</p>
+          <p>If you need long-term, stable, predictable dedicated connectivity, free nodes may not be suitable. They are better for temporary research, lightweight access, and connection testing.</p>
         `,
       },
       {
@@ -179,36 +169,31 @@ const ARTICLES = {
         id: "about-trashvpn",
         title: "درباره TrashVPN",
         html: `
-          <p>TrashVPN یک برنامه رایگان VPN / پراکسی شبکه است که توسط یک توسعه‌دهنده مستقل ساخته و نگهداری می‌شود. این پروژه در ابتدا فقط یک ابزار کم‌هزینه برای نیازهای شخصی بود؛ مثل خواندن مستندات فنی، بررسی سرویس‌های خارج از کشور و آزمایش دسترسی شبکه. بعداً به‌تدریج به کلاینت‌های Windows و Android و یک وب‌سایت برای دانلود، راهنما و وضعیت سرویس تبدیل شد.</p>
-          <p>در روند توسعه، از Codex برای کمک به نوشتن، تنظیم و بررسی بخشی از کدها و متن‌های وب‌سایت استفاده شده است. Codex در کارهای تکراری مانند ساختار صفحه، پیش‌نویس متن، بررسی خطای اسکریپت و بهبود نمایش واکنش‌گرا کمک کرده؛ اما تصمیم‌های محصول، انتشار، 운영، نگهداری سرور و مسئولیت نهایی همچنان بر عهده توسعه‌دهنده است.</p>
-          <p>در حال حاضر TrashVPN فقط از <strong>Windows</strong> و <strong>Android</strong> پشتیبانی می‌کند. گزینه‌های iOS و macOS در صفحه دانلود فعلاً فقط جایگاه نمایشی هستند و نسخه رسمی منتشرشده محسوب نمی‌شوند. برای دریافت نسخه‌های موجود و مشاهده سیاست حریم خصوصی و مجوزهای متن‌باز هر پلتفرم، به صفحه دانلود مراجعه کنید.</p>
-          <p>رایگان بودن سرویس به دلیل حمایت تجاری بزرگ نیست، بلکه به این دلیل است که هزینه اجرا بسیار پایین نگه داشته شده است. کلاینت سبک طراحی شده، همگام‌سازی نودها خودکار است و وب‌سایت به‌صورت ایستا میزبانی می‌شود. نگهداری روزمره بیشتر به چند رابط backend و منابع نود محدود می‌شود. تا زمانی که این هزینه‌ها قابل کنترل باشند، سرویس تلاش می‌کند رایگان بماند.</p>
-          <p>با این حال «رایگان» به معنی تضمین نامحدود نیست. در دسترس بودن نودها ممکن است تحت تأثیر مسیریابی Cloudflare، محدودیت حساب، خطوط ارائه‌دهنده اینترنت، شرایط شبکه منطقه‌ای و قوانین وب‌سایت مقصد قرار بگیرد. اگر منابع بسیار گران شوند یا نودها به‌طور گسترده مسدود شوند، پروژه ممکن است تعداد نودها را کاهش دهد، سرویس را موقتاً متوقف کند یا منابع پولی اختیاری ارائه دهد.</p>
-          <p>TrashVPN را بهتر است یک ابزار سبک، شفاف و کم‌هزینه برای دسترسی شبکه بدانید، نه یک محصول حریم خصوصی سازمانی یا شتاب‌دهنده تجاری. قبل از استفاده، محدودیت‌ها را درک کنید: کشورها ممکن است تغییر کنند، سرعت تضمین نمی‌شود، برای اطلاعات حساس مناسب نیست و نباید برای فعالیت غیرقانونی، حمله، کلاهبرداری یا سوءاستفاده از منابع شبکه استفاده شود.</p>
+          <p>TrashVPN یک VPN / پراکسی شبکه رایگان است که توسط یک توسعه‌دهنده مستقل نگهداری می‌شود و اکنون از <strong>Windows، Android، iOS و macOS</strong> پشتیبانی می‌کند.</p>
+          <p>اتصال برنامه از شبکه Cloudflare عبور می‌کند؛ بنابراین منطقه، سرعت و دسترسی ممکن است تحت تأثیر مسیریابی، خطوط اپراتور، منابع حساب و قوانین وب‌سایت مقصد قرار بگیرد. منطقه ثابت یا سرعت پایدار تضمین نمی‌شود.</p>
+          <p>TrashVPN برای بررسی موقت، دسترسی سبک و آزمایش اتصال مناسب است. کلاینت‌ها را از وب‌سایت رسمی دریافت کنید و از برنامه برای فعالیت غیرقانونی، حمله، کلاهبرداری یا انتقال اطلاعات حساس استفاده نکنید.</p>
         `,
       },
       {
         id: "country-availability",
         title: "چرا کشورهای قابل انتخاب کم هستند؟",
         html: `
-          <p>اتصال‌های TrashVPN با شبکه Cloudflare درگیر هستند. بسیاری از کاربران تصور می‌کنند «کشور نود» مثل یک VPS سنتی عمل می‌کند: اگر سرور در یک کشور خریداری شده باشد، خروجی همیشه همان کشور را نشان می‌دهد. اما مسیریابی Cloudflare متفاوت است. یک نود واحد ممکن است بسته به اپراتور اینترنت، شهر، زمان روز و حتی خط اینترنت متفاوت در همان منطقه، به مراکز داده مختلف هدایت شود.</p>
-          <p>Cloudflare فاصله فیزیکی، ظرفیت مراکز داده نزدیک، بار فعلی سرورها، کیفیت مسیر و سیاست زمان‌بندی خودش را بررسی می‌کند و سپس تصمیم می‌گیرد اتصال از کجا وارد شبکه شود. این فرایند عمدتاً تحت کنترل Cloudflare است؛ بنابراین TrashVPN نمی‌تواند همیشه کشور IP بیرونی را دقیقاً تعیین کند.</p>
-          <p>به همین دلیل فهرست کشورها عمداً کوچک نگه داشته شده است. اگر برنامه کشورهای زیادی نشان دهد که عملاً قابل تضمین نیستند، کاربر ممکن است «ایالات متحده» را انتخاب کند اما رفتار ترافیک شبیه سنگاپور باشد، یا «ژاپن» را ببیند اما تست‌ها هنگ‌کنگ را نشان دهند. توضیح کمتر اما صادقانه، بهتر از فهرست بزرگ و گمراه‌کننده است.</p>
-          <p>علاوه بر IP بیرونی، یک لایه داخلی قابل تنظیم نیز وجود دارد که همان <strong>proxy IP</strong> است. در حال حاضر proxy IP به‌صورت تصادفی از هنگ‌کنگ، سنگاپور، ژاپن و ایالات متحده به کاربران اختصاص داده می‌شود. هنگام بازدید از سایت‌هایی که از Cloudflare CDN استفاده می‌کنند، ترافیک بیشتر ممکن است proxy IP را نشان دهد؛ اما برای سایت‌های دیگر، نتیجه معمولاً به مسیریابی IP بیرونی نزدیک‌تر است.</p>
-          <p>این موضوع می‌تواند نتایج ظاهراً متناقض ایجاد کند: سایت تست سرعت یک منطقه را نشان دهد، شبکه اجتماعی منطقه دیگری را تشخیص دهد و موتور جستجو تأیید اضافی بخواهد. این همیشه نشانه خرابی کلاینت نیست؛ بلکه معمولاً نتیجه چند لایه شبکه، CDN، proxy IP و سیستم‌های ریسک وب‌سایت مقصد است.</p>
-          <div class="help-callout">بنابراین کشور نمایش‌داده‌شده در برنامه یک راهنمای عملی است، نه یک وعده قطعی. هنگام انتخاب نود، تأخیر، پایداری و باز شدن سایت مورد نیازتان مهم‌تر از نام کشور است.</div>
+          <p>بسیاری از افراد با دیدن «کشور نود» تصور می‌کنند که مانند VPS است: کشوری که سرور در آن خریداری شده، کشور خروجی را برای همیشه تعیین می‌کند. اما نودهای Cloudflare این‌گونه کار نمی‌کنند. یک نود واحد ممکن است بسته به اپراتور اینترنت، شهر، بازه زمانی و حتی خط پهن‌باند متفاوت در همان منطقه، از سوی Cloudflare به مراکز داده کشورهای مختلف اختصاص داده شود.</p>
+          <p>Cloudflare فاصله فیزیکی کاربر، تعداد مراکز داده نزدیک، بار فعلی سرورها در هر منطقه، کیفیت خط و سیاست‌های زمان‌بندی خود را به‌طور هم‌زمان ارزیابی می‌کند و سپس تصمیم می‌گیرد اتصال شما وارد مرکز داده کدام کشور شود.</p>
+          <p>بنابراین برای یک نود یکسان، فقط خود شما می‌دانید اتصال واقعاً در کدام کشور فرود می‌آید. کشوری که داخل برنامه نوشته شده صرفاً جنبه تزئینی دارد و ظاهر برنامه را زیباتر می‌کند.</p>
+          <div class="help-callout">بنابراین افزایش تعداد کشورها هیچ معنایی ندارد.</div>
+
+          <p>علاوه بر IP بیرونی، بخشی از ترافیک اتصال از IP داخلی، یعنی <strong>proxy IP</strong>، استفاده می‌کند. proxy IP به‌صورت تصادفی از کره جنوبی، سنگاپور، ژاپن یا ایالات متحده به کاربر اختصاص داده می‌شود. برای وب‌سایت‌هایی که از Cloudflare CDN استفاده می‌کنند، proxy IP به کار می‌رود؛ برای سایر وب‌سایت‌ها، IP بیرونی استفاده می‌شود.</p>
         `,
       },
       {
         id: "usage-limit",
         title: "آیا محدودیت مصرف وجود دارد؟",
         html: `
-          <p>بله. بخشی از منابع مورد استفاده TrashVPN دارای محدودیت سطح حساب Cloudflare هستند و این محدودیت هر روز ساعت <strong>۸ صبح به وقت پکن</strong> بازنشانی می‌شود. وقتی یک حساب به سقف مصرف برسد، نودهای مرتبط با آن حساب ممکن است تا زمان بازنشانی یا دریافت نودهای جدید موقتاً غیرقابل استفاده شوند.</p>
-          <p>یک حساب ممکن است بین چند کاربر مشترک باشد. بنابراین رسیدن به محدودیت لزوماً به این معنی نیست که شما شخصاً مصرف زیادی داشته‌اید؛ ممکن است نتیجه مصرف مجموع کاربران دیگر همان حساب باشد. برای پایین نگه داشتن هزینه سرویس رایگان، برای هر کاربر منابع کاملاً اختصاصی در نظر گرفته نمی‌شود.</p>
-          <p>کلاینت تقریباً هر ساعت یک بار اطلاعات مصرف حساب را دریافت می‌کند. وقتی یک حساب به محدودیت نزدیک شود، کلاینت تلاش می‌کند نودهای تازه را همگام‌سازی کند و در صورت امکان به منابعی که هنوز قابل استفاده هستند تغییر مسیر دهد. این فرایند سیستم صورتحساب لحظه‌ای یا شمارنده دقیق مصرف شخصی نیست؛ فقط یک مرجع زمان‌بندی برای بهتر کردن دسترسی نودهای رایگان است.</p>
-          <p>اگر یک نود ناگهان وصل نشد، کند شد یا وب‌سایت‌ها را باز نکرد، کمی صبر کنید یا فهرست نودها را دستی تازه‌سازی کنید. در بسیاری از موارد، علت مشکل محدودیت حساب، شلوغی مسیر، تغییر زمان‌بندی Cloudflare یا کنترل ریسک وب‌سایت مقصد است، نه خرابی خود کلاینت.</p>
-          <p>همچنین می‌توانید به <a href="status.html">صفحه وضعیت</a> بروید و توزیع تقریبی بار کلی را ببینید. این صفحه بازه‌های تعداد درخواست و میانگین درخواست‌ها را نشان می‌دهد تا مشخص شود سرویس به‌طور کلی شلوغ است یا نه؛ این یک صورتحساب دقیق برای یک دستگاه، یک IP یا یک کاربر نیست.</p>
-          <p>اگر به اتصال طولانی‌مدت، بسیار پایدار و قابل پیش‌بینی نیاز دارید، نودهای رایگان فعلی ممکن است انتخاب مناسبی نباشند. TrashVPN بیشتر برای بررسی موقت، دسترسی سبک و آزمایش در دسترس بودن مسیر مناسب است.</p>
+          <p>بله. بخشی از منابع حساب Cloudflare مورد استفاده TrashVPN دارای محدودیت هستند و هر روز ساعت <strong>۸ صبح به وقت پکن</strong> بازنشانی می‌شوند. پس از رسیدن به محدودیت، نودهای مرتبط ممکن است موقتاً در دسترس نباشند.</p>
+          <p>محدودیت مصرف شخصی نیز وجود دارد. در نسخه‌های موبایل و macOS، پس از رسیدن به محدودیت شخصی می‌توانید با تماشای تبلیغات مصرف اضافی دریافت کنید. در Windows، پس از رسیدن به محدودیت ده دقیقه صبر کنید و سپس مصرف را به‌صورت دستی در کلاینت بازنشانی کنید.</p>
+          <p>ممکن است یک حساب بین چند کاربر مشترک باشد؛ بنابراین رسیدن به سقف لزوماً به معنی مصرف زیاد شخصی شما نیست. اگر نودی قطع یا کند شد، بعداً دوباره تلاش کنید، فهرست نودها را تازه‌سازی کنید یا بار کلی را در <a href="status.html">صفحه وضعیت</a> ببینید.</p>
+          <p>اگر به اتصال اختصاصی، پایدار و قابل پیش‌بینی نیاز دارید، نودهای رایگان مناسب نیستند؛ این نودها بیشتر برای بررسی موقت، دسترسی سبک و آزمایش اتصال هستند.</p>
         `,
       },
       {
